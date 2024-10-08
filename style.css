@@ -84,12 +84,11 @@ main{
 .resultadoClima_container{
     min-height: 300px;
     min-width: 250px;
-}
-.resultadoClima_container{
     background-color: rgb(70, 104, 70);
     border-radius: 10px;
     margin: 0 20px 0 20px;
     color: white;
+    align-self: flex-start;
 }
 .resultadoCepGrid, #resultadoCepGrid{
     background-color: rgb(183, 207, 183);

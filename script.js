@@ -21,6 +21,8 @@ const clima = document.getElementById("clima")
 const umidade = document.getElementById("umidade")
 const vento = document.getElementById("vento")
 
+//06530-001
+
 const apiKey = "f76fba12aefcbf8cc359f32a1d24a68c";
 
 //Array do histórcio
@@ -150,50 +152,53 @@ async function climaData(conteudo){
 
 //Função que recebe os dados, armazena e exibe
 function callbackCep(conteudo) {
-    if (!("erro" in conteudo)) {
-        //Atualiza os campos com os valores.
-        if (Array.isArray(conteudo)) {
-            document.querySelectorAll(".resultadoLocal").forEach(result => {
-                result.style.display = "none"
-            })
-            conteudo.forEach(data => {
-                setResultCep(data)
-                main.style.height = "auto";
-                climaData(data)
-                tituloResult.style.display = "none"
-                resultadoCepGrid.style.display = "none"
-                resultadoCont.style.display = "flex"
-            })
-        } else{
-            cep.innerText=(conteudo.cep);
-            rua.innerText=(conteudo.logradouro);
-            bairro.innerText=(conteudo.bairro);
-            cidade.innerText=(conteudo.localidade);
-            uf.innerText=(conteudo.uf);
-            ibge.innerText=(conteudo.ibge);
+    if (conteudo.length > 0){
+        if (!("erro" in conteudo)) {
+            //Atualiza os campos com os valores.
+            if (Array.isArray(conteudo)) {
+                document.querySelectorAll(".resultadoLocal").forEach(result => {
+                    result.style.display = "none"
+                })
+                conteudo.forEach(data => {
+                    setResultCep(data)
+                    main.style.height = "auto";
+                    climaData(data)
+                    tituloResult.style.display = "none"
+                    resultadoCepGrid.style.display = "none"
+                    resultadoCont.style.display = "flex"
+                })
+            } else{
+                cep.innerText=(conteudo.cep);
+                rua.innerText=(conteudo.logradouro);
+                bairro.innerText=(conteudo.bairro);
+                cidade.innerText=(conteudo.localidade);
+                uf.innerText=(conteudo.uf);
+                ibge.innerText=(conteudo.ibge);
+        
+                climaData(conteudo)
     
-            climaData(conteudo)
-
-            document.querySelectorAll(".resultadoCepGrid").forEach(resultado => {
-                resultado.style.display = "none"
-            })
-            document.querySelectorAll(".tituloResult").forEach(titulo =>{
-                titulo.style.display = "none"
-            })
-
-            tituloResult.style.display = "block"
-            resultadoCepGrid.style.display = "grid"
-            resultadoCont.style.display = "flex"
+                document.querySelectorAll(".resultadoCepGrid").forEach(resultado => {
+                    resultado.style.display = "none"
+                })
+                document.querySelectorAll(".tituloResult").forEach(titulo =>{
+                    titulo.style.display = "none"
+                })
+    
+                tituloResult.style.display = "block"
+                resultadoCepGrid.style.display = "grid"
+                resultadoCont.style.display = "flex"
+            }
+            inputCep.value = ""
+            inputCidade.value = ""
+            inputEstado.value = ""
+            inputRua.value = ""
+        } else {
+            limpa_formulário_cep();
+            alert("Local não encontrado.");
         }
-        inputCep.value = ""
-        inputCidade.value = ""
-        inputEstado.value = ""
-        inputRua.value = ""
-    } //end if.
-    else {
-        //CEP não Encontrado.
+    } else {
         limpa_formulário_cep();
-        alert("CEP não encontrado.");
+        alert("Local não encontrado.");
     }
     if (historicoArr.length > 0){
         btnHistCont.style.display = "block"
@@ -277,12 +282,8 @@ function setResultCep(data){
     resultLocal.appendChild(ibgeDiv)
 }
 
-function callbackCord(conteudo){
-    console.log(conteudo)
-}
-
 //Função que busca os dados no webservice e chama a função de receber
-function pesquisarCep() {
+async function pesquisarCep() {
 
     var cep = inputCep.value.replace(/\D/g, '');
 
@@ -298,9 +299,10 @@ function pesquisarCep() {
             uf.innerText="...";
             ibge.innerText="...";
 
-            var scriptCep = document.createElement('script')
-            scriptCep.src = 'https://viacep.com.br/ws/'+ cep + '/json/?callback=callbackCep';
-            document.body.appendChild(scriptCep);
+            const cepUrl = `https://viacep.com.br/ws/${cep}`;
+            const res = await fetch(cepUrl)
+            const data = await res.json()
+            callbackCep(data)
 
         }
         else {
@@ -313,7 +315,7 @@ function pesquisarCep() {
         limpa_formulário_cep();
     }
 };
-function pesquisarLocal() {
+async function pesquisarLocal() {
 
     var estadoValue = inputEstado.value
     var cidadeValue = inputCidade.value
@@ -321,9 +323,11 @@ function pesquisarLocal() {
 
     if (estadoValue != "" || cidadeValue != "" || ruaValue != "") {
 
-        var scriptLocal = document.createElement('script')
-        scriptLocal.src = `https://viacep.com.br/ws/${estadoValue}/${cidadeValue}/${ruaValue}/json/?callback=callbackCep`;
-        document.body.appendChild(scriptLocal);
+        const localUrl = `https://viacep.com.br/ws/${estadoValue}/${cidadeValue}/${ruaValue}`;
+        const res = await fetch(localUrl)
+        const data = await res.json()
+        console.log(data)
+        callbackCep(data)
         
     }
     else {
