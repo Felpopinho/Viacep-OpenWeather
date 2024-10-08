@@ -152,7 +152,7 @@ async function climaData(conteudo){
 
 //Função que recebe os dados, armazena e exibe
 function callbackCep(conteudo) {
-    if (conteudo.length > 0){
+    if (conteudo.length !== 0){
         if (!("erro" in conteudo)) {
             //Atualiza os campos com os valores.
             if (Array.isArray(conteudo)) {
@@ -174,16 +174,16 @@ function callbackCep(conteudo) {
                 cidade.innerText=(conteudo.localidade);
                 uf.innerText=(conteudo.uf);
                 ibge.innerText=(conteudo.ibge);
-        
+            
                 climaData(conteudo)
-    
+
                 document.querySelectorAll(".resultadoCepGrid").forEach(resultado => {
                     resultado.style.display = "none"
                 })
                 document.querySelectorAll(".tituloResult").forEach(titulo =>{
                     titulo.style.display = "none"
                 })
-    
+
                 tituloResult.style.display = "block"
                 resultadoCepGrid.style.display = "grid"
                 resultadoCont.style.display = "flex"
@@ -196,7 +196,7 @@ function callbackCep(conteudo) {
             limpa_formulário_cep();
             alert("Local não encontrado.");
         }
-    } else {
+    } else{
         limpa_formulário_cep();
         alert("Local não encontrado.");
     }
@@ -299,10 +299,10 @@ async function pesquisarCep() {
             uf.innerText="...";
             ibge.innerText="...";
 
-            const cepUrl = `https://viacep.com.br/ws/${cep}`;
-            const res = await fetch(cepUrl)
-            const data = await res.json()
-            callbackCep(data)
+            var scriptCep = document.createElement('script')
+            scriptCep.src = `https://viacep.com.br/ws/${cep}/json/?callback=callbackCep`;
+
+            document.body.appendChild(scriptCep);
 
         }
         else {
@@ -323,12 +323,14 @@ async function pesquisarLocal() {
 
     if (estadoValue != "" || cidadeValue != "" || ruaValue != "") {
 
-        const localUrl = `https://viacep.com.br/ws/${estadoValue}/${cidadeValue}/${ruaValue}`;
-        const res = await fetch(localUrl)
-        const data = await res.json()
-        console.log(data)
-        callbackCep(data)
-        
+        if (cidadeValue.length >= 3 && ruaValue.length >= 3 && estadoValue.length === 2){
+            var scriptLocal = document.createElement('script')
+            scriptLocal.src = `https://viacep.com.br/ws/${estadoValue}/${cidadeValue}/${ruaValue}/json/?callback=callbackCep`;
+
+            document.body.appendChild(scriptLocal);
+        } else{
+            alert("Formato invalido");
+        }
     }
     else {
         alert("O campo está vazio.");
