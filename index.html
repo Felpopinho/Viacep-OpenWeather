@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Localizar CEP</title>
+    <link rel="stylesheet" href="./style.css">
+    <script src="https://kit.fontawesome.com/2f458bbb20.js" crossorigin="anonymous"></script>
+</head>
+<body>
+    <header>
+        <div class="header">
+            <h1 class="titulo">Localiza via CEP</h1>
+        </div>
+        <div>
+            <h2>Receba informações como CEP, rua, bairro, cidade, estado, IBGE, temperatura, clima, umidade e velocidade do vento</h2>
+        </div>
+    </header>
+    <main id="main">
+        <div class="processo" id="processo">
+            <form>
+                <h2>Localização via CEP</h2>
+                <div class="pCep">
+                    <input type="text" placeholder="Digite o CEP" id="inputCep" class="caixa">
+                    <button type="button" onclick="pesquisarCep()" class="botao">Enviar</button>
+                </div>
+            </form>
+            <form>
+                <h2>CEP via localização</h2>
+                <div class="pLocal">
+                    <input type="text" placeholder="Digite a cidade" id="inputCidade" class="caixa">
+                    <input type="text" placeholder="Digite o estado" id="inputEstado" class="caixa">
+                    <input type="text" placeholder="Digite a rua" id="inputRua" class="caixa">
+                    <button type="button" onclick="pesquisarLocal()" class="botao">Enviar</button>
+                </div>
+            </form>
+        </div>
+        <div class="resultado_container" id="resultadoCont">
+            <div class="resultadoCep" id="resultadoCep">
+                <h1 id="tituloResult">Localização:</h1>
+                <div id="resultadoCepGrid" style="background-color: rgb(183, 207, 183);">
+                    <div class="cepResult"><h2>CEP:&nbsp;</h2><p id="cep"></p></div>
+                    <div class="ruaResult"><h2>Rua:&nbsp;</h2><p id="rua"></p></div>
+                    <div class="bairroResult"><h2>Bairro:&nbsp;</h2><p id="bairro"></p></div>
+                    <div class="cidadeResult"><h2>Cidade: &nbsp;</h2><p id="cidade"></p></div>
+                    <div class="ufResult"><h2>Estado: &nbsp;</h2><p id="uf"></p></div>
+                    <div class="ibgeResult"><h2>IBGE: &nbsp;</h2><p id="ibge"></p></div>
+                </div>
+            </div>
+            <div class="resultadoClima_container">
+                <h1 style="text-align: center; margin: 2px;">Clima:</h1>
+                <div class="resultadoClima">
+                    <div class="climaDiv"><i class="fa-solid fa-temperature-half"></i><p id="graus"></p></div>
+                    <div class="climaDiv"><p id="clima"></p></div>
+                    <div class="climaDiv"><i class="fa-solid fa-droplet"></i><p id="umidade"></p></div>
+                    <div class="climaDiv"><i class="fa-solid fa-wind"></i><p id="vento"></p></div>
+                </div>
+            </div>
+        </div>
+        <button onclick="mostrarHistorico()" class="btn_historicocont" id="btnHistCont">Visualizar histórico</button>
+        <div class="historico_container" id="historicoContainer">
+            <h1>Historico:</h1>
+            <div class="historico" id="historico">
+                
+            </div>
+        </div>
+    </main>
+    <footer>
+        <div class="devs_container">
+            <h2>Desenvolvido por:</h2>
+            <div class="devs">
+                <p>Felipe Tomaz</p>
+                <p>Guilherme Ferreira</p>
+                <p>Gustavo Henrique</p>
+                <p>Ryann Barreto</p>
+                <p>2B info</p>
+            </div>
+        </div>
+        <div>
+            <h2>Projeto IW</h2>
+            <div>
+                <p>API viacep</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="./script.js"></script>
+</body>
+</html>

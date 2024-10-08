@@ -1,0 +1,224 @@
+*{
+    margin: 0;
+}
+body{
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+p{
+    padding: 0;
+    border: 0;
+    margin: 0;
+}
+header{
+    height: 15vh;
+    background-color: rgb(180, 212, 167);
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+}
+.header{
+    height: 11vh;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: rgb(33, 131, 33);
+}
+.titulo{
+    font-size: 3em;
+    color: rgb(255, 255, 255);
+}
+main{
+    width: 100%;
+    height: 75vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    min-height: 75vh;
+}
+.processo{
+    display: flex;
+    justify-content: space-evenly;
+    width: 100%;
+    margin: 50px 0
+}
+.pCep{
+    display: flex;
+    height: 5vh;
+}
+.pLocal{
+    display: grid;
+    grid-template-columns: 70% 30%;
+    grid-template-rows: 5vh 5vh;
+}
+.caixa{
+    margin: 0;
+    padding: 0 0 0 10px;
+    border: solid 1px;
+    font-size: 1.5em;
+    height: 100%;
+}
+.botao{
+    height: 100%;
+    border: 0;
+    border-left: solid 1px black;
+    background-color: rgb(41, 134, 41);
+    font-size: 1.5em;
+    font-weight: bold;
+    color: white;
+}
+.botao:active{
+    background-color: rgb(42, 99, 42);
+    box-shadow: inset 0px 3px 10px black;
+}
+.resultado_container{
+    display: none;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+}
+.tituloResult, #tituloResult{
+    text-align: center;
+}
+.resultadoClima_container{
+    min-height: 300px;
+    min-width: 250px;
+}
+.resultadoClima_container{
+    background-color: rgb(70, 104, 70);
+    border-radius: 10px;
+    margin: 0 20px 0 20px;
+    color: white;
+}
+.resultadoCepGrid, #resultadoCepGrid{
+    background-color: rgb(183, 207, 183);
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr 1fr;
+    grid-template-rows: 1fr 1fr 1fr;
+    place-items: center;
+    border-radius: 10px;
+    border: 1px solid;
+    overflow: hidden;
+}
+
+.cepResult, .bairroResult, .ufResult{
+    grid-column: 1/3;
+    margin: 10px;
+}
+.ruaResult, .ibgeResult, .cidadeResult{
+    grid-column: 3/5;
+    margin: 10px;
+}
+
+.resultadoCepGrid div,  #resultadoCepGrid div{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    height: 100%;
+    border: 1px solid;
+}
+.resultadoCepGrid h2, #resultadoCepGrid h2, .historico h2, .historico p h2{
+    font-size: 1.3em;
+    text-transform: capitalize;
+    
+}
+.resultadoCepGrid p, #resultadoCepGrid p, .historico p, .resultadoClima p{
+    font-size: 1.3em;
+}
+
+.resultadoClima{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-between;
+    padding: 20px;
+    height: 215px;
+    border-top: solid 1px rgb(82, 82, 82);
+}
+
+.resultadoClima i{
+    font-size: 1.1rem;
+    margin-right: 10px;
+}
+
+.climaDiv{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-transform: capitalize;
+    font-weight: bold;
+    background-color: rgb(95, 129, 95);
+    width: 100%;
+    padding: 5px 0;
+    border-radius: 5px;
+}
+
+.btn_historicocont{
+    display: none;
+    margin: 25px;
+    width: 200px;
+    height: 50px;
+    font-size: 1.2em;
+    background-color: rgb(180, 212, 167);
+}
+.historico_container{
+    display: none;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+}
+.historico{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+}
+.containerHistorico{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    background-color: rgb(183, 207, 183);
+    border: 1px solid;
+    border-radius: 10px;
+    margin: 20px;
+}
+.contDadosHistorico{
+    display: flex;
+    flex-direction: column;
+    align-items: start;
+    border-top: solid 1px;
+}
+.contDadosHistorico p{
+    margin: 5px;
+}
+.contDadosHistorico p:firs{
+    margin: 5px;
+}
+footer{
+    height: 10vh;
+    width: 100%;
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+    background-color: rgb(17, 17, 17);
+    align-self: end;
+}
+.devs_container{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+} footer h2{
+    color: rgb(182, 182, 182);
+}
+.devs{
+    display: flex;
+}
+footer p{
+    margin: 10px;
+    font-size: 0.9em;
+    font-weight: bold;
+    color: rgb(151, 151, 151);
+}
