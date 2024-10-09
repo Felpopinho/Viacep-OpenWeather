@@ -59,7 +59,14 @@
         </div>
         <button onclick="mostrarHistorico()" class="btn_historicocont" id="btnHistCont">Visualizar histórico</button>
         <div class="historico_container" id="historicoContainer">
-            <h1>Historico:</h1>
+            <div class="navHistorico">
+                <h1>Historico:</h1>
+                <div class="formPesquisa">
+                    <input type="search" placeholder="Pesquise CEP/uf/cidade/rua" id="pesquisaInput">
+                    <button onclick="pesquisarHistorico()"><i class="fa-solid fa-magnifying-glass"></i></button>
+                </div>
+            </div>
+
             <div class="historico" id="historico">
                 
             </div>

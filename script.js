@@ -20,6 +20,7 @@ const graus = document.getElementById("graus")
 const clima = document.getElementById("clima")
 const umidade = document.getElementById("umidade")
 const vento = document.getElementById("vento")
+const pesquisaInput = document.getElementById("pesquisaInput");
 
 //06530-001
 
@@ -78,6 +79,51 @@ function setHistorico(callback){
         localStorage.setItem(callback.cep, JSON.stringify(data))
         historicoArr.push(JSON.parse(localStorage.getItem(callback.cep)))
     }
+}
+
+function pesquisarHistorico(){
+    const search = historicoArr.filter((dados)=>dados.titulo.startsWith(pesquisaInput.value) || dados.rua.startsWith(pesquisaInput.value) || dados.uf.startsWith(pesquisaInput.value) || dados.cidade.startsWith(pesquisaInput.value))
+    document.querySelectorAll(".containerHistorico").forEach(e =>{
+        e.style.display = "none"
+    })
+    search.forEach(dados => {
+        var container = document.createElement('div')
+        container.className = "containerHistorico"
+        historico.appendChild(container)
+        var cepH = document.createElement('h2');
+        container.appendChild(cepH);
+        cepH.innerText = "Cep: "+dados.titulo;
+        var contHistorico = document.createElement('div')
+        contHistorico.className = "contDadosHistorico"
+        container.appendChild(contHistorico)
+        var ruaH = document.createElement('p');
+        var bairroH = document.createElement('p');
+        var cidadeH = document.createElement('p');
+        var ufH = document.createElement('p');
+        var ibgeH = document.createElement('p');
+        var tempH = document.createElement('p');
+        var climaH = document.createElement('p');
+        var umidadeH = document.createElement('p');
+        var ventoH = document.createElement('p');
+        contHistorico.appendChild(ruaH);
+        contHistorico.appendChild(bairroH);
+        contHistorico.appendChild(cidadeH);
+        contHistorico.appendChild(ufH);
+        contHistorico.appendChild(ibgeH);
+        contHistorico.appendChild(tempH);
+        contHistorico.appendChild(climaH);
+        contHistorico.appendChild(umidadeH);
+        contHistorico.appendChild(ventoH);
+        ruaH.innerHTML=`<span style="font-weight: bold">Rua: </span>${dados.rua}`;
+        bairroH.innerHTML=`<span style="font-weight: bold">Bairro: </span>${dados.bairro}`;
+        cidadeH.innerHTML=`<span style="font-weight: bold">Cidade: </span>${dados.cidade}`;
+        ufH.innerHTML=`<span style="font-weight: bold">Estado: </span>${dados.uf}`;
+        ibgeH.innerHTML=`<span style="font-weight: bold">IBGE: </span>${dados.ibge}`;
+        tempH.innerHTML=`<span style="font-weight: bold">Temperatura: </span>${dados.temperatura}`;
+        climaH.innerHTML=`<span style="font-weight: bold">Clima: </span>${dados.clima}`;
+        umidadeH.innerHTML=`<span style="font-weight: bold">Umidade: </span>${dados.umidade}`;
+        ventoH.innerHTML=`<span style="font-weight: bold">Vento: </span>${dados.vento}`;
+    })
 }
 
 

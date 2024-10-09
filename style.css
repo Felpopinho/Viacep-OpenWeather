@@ -16,6 +16,10 @@ header{
     align-items: center;
     flex-direction: column;
 }
+header h2{
+    color: rgb(58, 58, 58);
+    font-size: 0.9rem;
+}
 .header{
     height: 11vh;
     width: 100%;
@@ -167,6 +171,31 @@ main{
     align-items: center;
     justify-content: center;
     flex-direction: column;
+    width: 100%;
+}
+.navHistorico{
+    display: flex;
+    justify-content: space-evenly;
+    width: 100%;
+}
+.formPesquisa{
+    display: flex;
+    border: 1px solid;
+    border-radius: 6px;
+}
+.formPesquisa input{
+    padding: 5px
+}
+.formPesquisa input, .formPesquisa button{
+    font-size: 1.1rem;
+    border: 0;
+    background-color: transparent;
+}
+.formPesquisa button{
+    background-color: rgb(100, 199, 100);
+    border-left: 1px solid;
+    border-radius: 0 6px 6px 0;
+    width: 50px;
 }
 .historico{
     display: flex;
