@@ -44,17 +44,22 @@ main{
 .processo{
     display: flex;
     justify-content: space-evenly;
-    width: 100%;
+    width: 80%;
     margin: 50px 0
 }
 .pCep{
     display: flex;
     height: 5vh;
+    margin: 10px;
+}
+form{
+    width: 100%;
 }
 .pLocal{
     display: grid;
     grid-template-columns: 70% 30%;
     grid-template-rows: 5vh 5vh;
+    margin: 10px;
 }
 .caixa{
     margin: 0;
@@ -238,7 +243,7 @@ footer{
     display: flex;
     flex-direction: column;
     align-items: center;
-} footer h2{
+} footer h2, footer span{
     color: rgb(182, 182, 182);
 }
 .devs{
@@ -249,4 +254,54 @@ footer p{
     font-size: 0.9em;
     font-weight: bold;
     color: rgb(151, 151, 151);
+}
+
+@media screen and (max-width:1200px) {
+    .processo{
+        flex-direction: column;
+        align-items: center;
+        justify-content: space-evenly;
+        height: 100%;
+    }
+    form{
+        width: 100%;
+    }
+    .pCep input{
+        width: 100%;
+    }
+    .pLocal{
+        display: flex;
+        flex-direction: column;
+    }
+    .pLocal input, .pLocal button{
+        padding: 10px;
+    }
+    .resultado_container{
+        flex-direction: column-reverse;
+        align-items: center;
+    }
+    .resultadoClima_container{
+        width: 100%;
+        align-self: center;
+        min-height: 100px;
+    }
+    .resultadoClima{
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        grid-template-rows: 50px 50px;
+        gap: 10px;
+        height: auto;
+    }
+    footer{
+        display: flex;
+        flex-direction: column;
+        height: auto;
+    }
+    .devs{
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        place-items: center;
+    } .devs span{
+        grid-column: 1/3;
+    }
 }
