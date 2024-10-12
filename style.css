@@ -18,7 +18,8 @@ header{
 }
 header h2{
     color: rgb(58, 58, 58);
-    font-size: 0.9rem;
+    font-size: clamp(1rem, 1.5vw, 2rem); 
+    text-align: center;
 }
 .header{
     height: 11vh;
@@ -27,6 +28,12 @@ header h2{
     justify-content: center;
     align-items: center;
     background-color: rgb(33, 131, 33);
+}
+.desc{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 4vh;
 }
 .titulo{
     font-size: 3em;
